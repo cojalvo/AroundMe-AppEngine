@@ -1,0 +1,391 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/ApDZK_duRz3FEueKKp_kDL3jRYs\"",
+ "discoveryVersion": "v1",
+ "id": "aroundmeapi:v1",
+ "name": "aroundmeapi",
+ "version": "v1",
+ "description": "This is an API",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://enhanced-cable-88320.appspot.com/_ah/api/aroundmeapi/v1/",
+ "basePath": "/_ah/api/aroundmeapi/v1/",
+ "rootUrl": "https://enhanced-cable-88320.appspot.com/_ah/api/",
+ "servicePath": "aroundmeapi/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "GeoPt": {
+   "id": "GeoPt",
+   "type": "object",
+   "properties": {
+    "latitude": {
+     "type": "number",
+     "format": "float"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "float"
+    }
+   }
+  },
+  "Message": {
+   "id": "Message",
+   "type": "object",
+   "properties": {
+    "contnet": {
+     "type": "string"
+    },
+    "downloaded": {
+     "type": "boolean"
+    },
+    "from": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "location": {
+     "$ref": "GeoPt"
+    },
+    "readRadius": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "timestamp": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "to": {
+     "type": "string"
+    }
+   }
+  },
+  "User": {
+   "id": "User",
+   "type": "object",
+   "properties": {
+    "fullName": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "imageUrl": {
+     "type": "string"
+    },
+    "location": {
+     "$ref": "UserLocation"
+    },
+    "mail": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    },
+    "registrationId": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAroundMe": {
+   "id": "UserAroundMe",
+   "type": "object",
+   "properties": {
+    "displayName": {
+     "type": "string"
+    },
+    "lastSeen": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "location": {
+     "$ref": "GeoPt"
+    },
+    "mail": {
+     "type": "string"
+    }
+   }
+  },
+  "UserAroundMeCollection": {
+   "id": "UserAroundMeCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "UserAroundMe"
+     }
+    }
+   }
+  },
+  "UserLocation": {
+   "id": "UserLocation",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "point": {
+     "$ref": "GeoPt"
+    },
+    "timeStamp": {
+     "type": "string",
+     "format": "date-time"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getAllUsers": {
+   "id": "aroundmeapi.getAllUsers",
+   "path": "getAllUsers",
+   "httpMethod": "GET",
+   "parameters": {
+    "userMail": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "userMail"
+   ],
+   "response": {
+    "$ref": "UserAroundMeCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getMessage": {
+   "id": "aroundmeapi.getMessage",
+   "path": "getMessage",
+   "httpMethod": "GET",
+   "parameters": {
+    "messageId": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "messageId"
+   ],
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getUsersAroundMe": {
+   "id": "aroundmeapi.getUsersAroundMe",
+   "path": "getUsersAroundMe",
+   "httpMethod": "GET",
+   "parameters": {
+    "lat": {
+     "type": "number",
+     "required": true,
+     "format": "float",
+     "location": "query"
+    },
+    "lng": {
+     "type": "number",
+     "required": true,
+     "format": "float",
+     "location": "query"
+    },
+    "radius": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "userMail": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "lat",
+    "lng",
+    "radius",
+    "userMail"
+   ],
+   "response": {
+    "$ref": "UserAroundMeCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "login": {
+   "id": "aroundmeapi.login",
+   "path": "login",
+   "httpMethod": "POST",
+   "parameters": {
+    "mail": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "password": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "registrationId": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "mail",
+    "password",
+    "registrationId"
+   ],
+   "response": {
+    "$ref": "User"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "register": {
+   "id": "aroundmeapi.register",
+   "path": "register",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "User",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "User"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "reportUserLocation": {
+   "id": "aroundmeapi.reportUserLocation",
+   "path": "reportUserLocation",
+   "httpMethod": "POST",
+   "parameters": {
+    "mail": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "mail"
+   ],
+   "request": {
+    "$ref": "GeoPt",
+    "parameterName": "resource"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sendGcmMessage": {
+   "id": "aroundmeapi.sendGcmMessage",
+   "path": "sendGcmMessage",
+   "httpMethod": "POST",
+   "parameters": {
+    "mail": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "message": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "mail",
+    "message"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sendMessage": {
+   "id": "aroundmeapi.sendMessage",
+   "path": "sendMessage",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Message",
+    "parameterName": "resource"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

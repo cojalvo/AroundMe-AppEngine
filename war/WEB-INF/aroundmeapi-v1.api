@@ -1,0 +1,379 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://enhanced-cable-88320.appspot.com/_ah/api",
+  "name" : "aroundmeapi",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://enhanced-cable-88320.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "aroundmeapi.getMessage" : {
+      "path" : "getMessage",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.getMessage",
+      "request" : {
+        "parameters" : {
+          "messageId" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "aroundmeapi.sendMessage" : {
+      "path" : "sendMessage",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.sendMessage",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "aroundmeapi.getUsersAroundMe" : {
+      "path" : "getUsersAroundMe",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.getUsersAroundMe",
+      "request" : {
+        "parameters" : {
+          "lat" : {
+            "type" : "float",
+            "required" : true
+          },
+          "lng" : {
+            "type" : "float",
+            "required" : true
+          },
+          "userMail" : {
+            "type" : "string",
+            "required" : true
+          },
+          "radius" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "aroundmeapi.login" : {
+      "path" : "login",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.login",
+      "request" : {
+        "parameters" : {
+          "mail" : {
+            "type" : "string",
+            "required" : true
+          },
+          "password" : {
+            "type" : "string",
+            "required" : true
+          },
+          "registrationId" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "aroundmeapi.register" : {
+      "path" : "register",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.register",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "aroundmeapi.sendGcmMessage" : {
+      "path" : "sendGcmMessage",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.sendGcmMessage",
+      "request" : {
+        "parameters" : {
+          "mail" : {
+            "type" : "string",
+            "required" : true
+          },
+          "message" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "aroundmeapi.reportUserLocation" : {
+      "path" : "reportUserLocation",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.reportUserLocation",
+      "request" : {
+        "parameters" : {
+          "mail" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "aroundmeapi.getAllUsers" : {
+      "path" : "getAllUsers",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.aroundme.api.AroundMeEndpoint.getAllUsers",
+      "request" : {
+        "parameters" : {
+          "userMail" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Message" : {
+        "id" : "Message",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "from" : {
+            "type" : "string"
+          },
+          "to" : {
+            "type" : "string"
+          },
+          "timestamp" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "downloaded" : {
+            "type" : "boolean"
+          },
+          "location" : {
+            "$ref" : "GeoPt"
+          },
+          "readRadius" : {
+            "type" : "integer"
+          },
+          "contnet" : {
+            "type" : "string"
+          }
+        }
+      },
+      "GeoPt" : {
+        "id" : "GeoPt",
+        "type" : "object",
+        "properties" : {
+          "latitude" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "longitude" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        }
+      },
+      "UserAroundMe" : {
+        "id" : "UserAroundMe",
+        "type" : "object",
+        "properties" : {
+          "location" : {
+            "$ref" : "GeoPt"
+          },
+          "lastSeen" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "mail" : {
+            "type" : "string"
+          },
+          "displayName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UserAroundMeCollection" : {
+        "id" : "UserAroundMeCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "UserAroundMe"
+            }
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "fullName" : {
+            "type" : "string"
+          },
+          "mail" : {
+            "type" : "string"
+          },
+          "registrationId" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          },
+          "imageUrl" : {
+            "type" : "string"
+          },
+          "location" : {
+            "$ref" : "UserLocation"
+          }
+        }
+      },
+      "UserLocation" : {
+        "id" : "UserLocation",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "point" : {
+            "$ref" : "GeoPt"
+          },
+          "timeStamp" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.aroundme.api.AroundMeEndpoint.getMessage" : {
+        "response" : {
+          "$ref" : "Message"
+        }
+      },
+      "com.aroundme.api.AroundMeEndpoint.sendMessage" : {
+        "request" : {
+          "$ref" : "Message"
+        }
+      },
+      "com.aroundme.api.AroundMeEndpoint.getUsersAroundMe" : {
+        "response" : {
+          "$ref" : "UserAroundMeCollection"
+        }
+      },
+      "com.aroundme.api.AroundMeEndpoint.login" : {
+        "response" : {
+          "$ref" : "User"
+        }
+      },
+      "com.aroundme.api.AroundMeEndpoint.register" : {
+        "request" : {
+          "$ref" : "User"
+        },
+        "response" : {
+          "$ref" : "User"
+        }
+      },
+      "com.aroundme.api.AroundMeEndpoint.sendGcmMessage" : {
+      },
+      "com.aroundme.api.AroundMeEndpoint.reportUserLocation" : {
+        "request" : {
+          "$ref" : "GeoPt"
+        }
+      },
+      "com.aroundme.api.AroundMeEndpoint.getAllUsers" : {
+        "response" : {
+          "$ref" : "UserAroundMeCollection"
+        }
+      }
+    }
+  }
+}
